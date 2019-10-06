@@ -2,6 +2,8 @@
 
 package lesson3.task1
 
+import lesson1.task1.sqr
+import kotlin.math.pow
 import kotlin.math.sqrt
 
 /**
@@ -67,7 +69,15 @@ fun digitCountInNumber(n: Int, m: Int): Int =
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun digitNumber(n: Int): Int = TODO()
+fun digitNumber(n: Int): Int {
+    var dn = 1
+    var k = n
+    while (k > 9) {
+        k /= 10
+        dn += 1
+    }
+    return dn
+}
 
 /**
  * Простая
@@ -75,7 +85,18 @@ fun digitNumber(n: Int): Int = TODO()
  * Найти число Фибоначчи из ряда 1, 1, 2, 3, 5, 8, 13, 21, ... с номером n.
  * Ряд Фибоначчи определён следующим образом: fib(1) = 1, fib(2) = 1, fib(n+2) = fib(n) + fib(n+1)
  */
-fun fib(n: Int): Int = TODO()
+fun fib(n: Int): Int {
+    var fib1 = 1
+    var fib2 = 0
+    var fibs = 1
+
+    for (i in 2..n) {
+        fib1 = fibs
+        fibs = fibs + fib2
+        fib2 = fib1
+    }
+    return (fibs)
+}
 
 /**
  * Простая
@@ -83,7 +104,16 @@ fun fib(n: Int): Int = TODO()
  * Для заданных чисел m и n найти наименьшее общее кратное, то есть,
  * минимальное число k, которое делится и на m и на n без остатка
  */
-fun lcm(m: Int, n: Int): Int = TODO()
+fun lcm(m: Int, n: Int): Int {
+    var dm = m
+    var dn = n
+    var mul = m * n
+    while (dm != dn) {
+        if (dm > dn) dm = dm - dn
+        else dn = dn - dm
+    }
+    return (mul / dn)
+}
 
 /**
  * Простая
@@ -92,11 +122,13 @@ fun lcm(m: Int, n: Int): Int = TODO()
  */
 fun minDivisor(n: Int): Int = TODO()
 
-/**
- * Простая
- *
- * Для заданного числа n > 1 найти максимальный делитель, меньший n
- */
+        /**
+         * Простая
+         *
+         * Для заданного числа n > 1 найти максимальный делитель, меньший n
+         */
+        ;
+
 fun maxDivisor(n: Int): Int = TODO()
 
 /**
@@ -196,7 +228,15 @@ fun hasDifferentDigits(n: Int): Boolean = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun squareSequenceDigit(n: Int): Int = TODO()
+fun squareSequenceDigit(n: Int): Int {
+    var sum = 0
+    var i = 1
+    while (sum < n) {
+        sum += digitNumber(sqr(i))
+        i++
+    }
+    return (sqr(i - 1)) / 10.0.pow((sum - n) % 10).toInt()
+}
 
 /**
  * Сложная
