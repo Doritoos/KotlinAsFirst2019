@@ -109,7 +109,10 @@ fun gradeNotation(grade: Int): String = when (grade) {
 }
 ----
 
-Эта функция принимает на вход целочисленную оценку (grade) и формирует на выходе соответствующую ей строку.
+Эта функция принимает на вход целочисленную оценку (grade) и формирует на выходе соответствующую ей строку.+
+
+
+
 Напомним, что строкам в Котлине соответствует тип `String` и записываются они в двойных кавычках.
 
 Для проверки возможного значения `grade` мы используем конструкцию `when (grade)`,
@@ -138,7 +141,7 @@ fun gradeNotation(grade: Int): String = when (grade) {
 ----
 fun pointInsideCircle(x: Double, y: Double, x0: Double, y0: Double, r: Double) =
         sqr(x - x0) + sqr(y - y0) <= sqr(r)
-----
+----0
 
 Здесь вновь используется функция `sqr` из урока 1 для вычисления квадратов чисел.
 Тип результата функции `pointInsideCircle` -- `Boolean`.
@@ -174,7 +177,7 @@ if (pointInsideCircle(x, y, 0.0, 0.0, 1.0) && pointInsideCircle(x, y, 1.0, 1.0, 
 if (pointInsideCircle(x, y, 0.0, 0.0, 1.0) || pointInsideCircle(x, y, 1.0, 1.0, 1.0)) { ... }
 // Не принадлежит
 if (!pointInsideCircle(x, y, 0.0, 0.0, 1.0)) { ... }
-----
+-----
 
 В этом примере используются логические __операции__:
 
@@ -208,7 +211,7 @@ if (!pointInsideCircle(x, y, 0.0, 0.0, 1.0)) { ... }
 
 [source,kotlin]
 ----
-fun minBiRoot(a: Double, b: Double, c: Double): Double {
+fun minBuiRoot(a: Double, b: Double, c: Double): Double {
     // 1: в главной ветке if выполняется НЕСКОЛЬКО операторов
     if (a == 0.0) {
         if (b == 0.0) return Double.NaN // ... и ничего больше не делать

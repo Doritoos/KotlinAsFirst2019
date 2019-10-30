@@ -96,7 +96,7 @@ fun whichRookThreatens(
     rookX2: Int, rookY2: Int
 ): Int {
     return when {
-        (kingX == rookX1) || (kingY == rookY1) && (kingX == rookX2) || (kingY == rookY2) -> 3
+        ((kingX == rookX1) || (kingY == rookY1)) && ((kingX == rookX2) || (kingY == rookY2)) -> 3
         (kingX == rookX1) || (kingY == rookY1) -> 1
         (kingX == rookX2) || (kingY == rookY2) -> 2
         else -> 0
@@ -119,7 +119,7 @@ fun rookOrBishopThreatens(
     bishopX: Int, bishopY: Int
 ): Int {
     return when {
-        (kingX == rookX) || (kingY == rookY) && (abs(kingY - bishopY) == abs(kingX - bishopX)) -> 3
+        ((kingX == rookX) || (kingY == rookY)) && (abs(kingY - bishopY) == abs(kingX - bishopX)) -> 3
         (kingX == rookX) || (kingY == rookY) -> 1
         (abs(kingY - bishopY) == abs(kingX - bishopX)) -> 2
         else -> 0
@@ -141,7 +141,7 @@ fun triangleKind(a: Double, b: Double, c: Double): Int {
     return when {
         (a + b <= c) || (a + c <= b) || (b + c <= a) -> -1
         (c * c == a * a + b * b) || (a * a == b * b + c * c) || (b * b == a * a + c * c) -> 1
-        (c * c <= a *a + b * b) -> 0
+        (c * c <= a * a + b * b) -> 0
         else -> 2
     }
 }

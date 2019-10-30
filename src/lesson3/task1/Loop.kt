@@ -14,7 +14,7 @@ import kotlin.math.sqrt
 fun factorial(n: Int): Double {
     var result = 1.0
     for (i in 1..n) {
-        result = result * i // Please do not fix in master
+        result *= i // Please do not fix in master
     }
     return result
 }
@@ -92,10 +92,10 @@ fun fib(n: Int): Int {
 
     for (i in 2..n) {
         fib1 = fibs
-        fibs = fibs + fib2
+        fibs += fib2
         fib2 = fib1
     }
-    return (fibs)
+    return fibs
 }
 
 /**
