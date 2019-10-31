@@ -179,13 +179,12 @@ fun times(a: List<Int>, b: List<Int>): Int {
  */
 fun polynom(p: List<Int>, x: Int): Int {
     var g = 0.0
-   return if (p.isEmpty()) 0
+    return if (p.isEmpty()) 0
     else {
         for (i in 0 until p.size)
             g += p[i] * x.toDouble().pow(i)
-    g.toInt()
-   }
-
+        g.toInt()
+    }
 }
 
 /**
@@ -198,8 +197,16 @@ fun polynom(p: List<Int>, x: Int): Int {
  *
  * Обратите внимание, что данная функция должна изменять содержание списка list, а не его копии.
  */
-fun accumulate(list: MutableList<Int>): MutableList<Int> = TODO()
+fun accumulate(list: MutableList<Int>): MutableList<Int> {
+    val s = 1
+    return if (list.isEmpty()) 0
+    else {
+        for (i in 1 until list.size)
+            s += list[i]
+        s
+    }
 
+}
 /**
  * Средняя
  *

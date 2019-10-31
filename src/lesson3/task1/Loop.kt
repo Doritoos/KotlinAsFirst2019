@@ -101,7 +101,7 @@ fun fib(n: Int): Int {
 /**
  * Простая
  *
- * Для заданн4ых чисел m и n найти наименьшее общее кратное, то есть,
+ * Для заданных чисел m и n найти наименьшее общее кратное, то есть,
  * минимальное число k, которое делится и на m и на n без остатка
  */
 fun lcm(m: Int, n: Int): Int {
@@ -109,10 +109,11 @@ fun lcm(m: Int, n: Int): Int {
     var dn = n
     var mul = m * n
     while (dm != dn) {
-        if (dm > dn) dm = dm - dn
-        else dn = dn - dm
+        if (dm > dn) dm -= dn
+        else dn -= dm
     }
     return (mul / dn)
+
 }
 
 /**
@@ -120,14 +121,16 @@ fun lcm(m: Int, n: Int): Int {
  *
  * Для заданного числа n > 1 найти минимальный делитель, превышающий 1
  */
-fun minDivisor(n: Int): Int = TODO()
+fun minDivisor(n: Int): Int {
+    for (i in 2..sqrt(n.toDouble().toInt()))
 
-        /**
-         * Простая
-         *
-         * Для заданного числа n > 1 найти максимальный делитель, меньший n
-         */
-        ;
+}
+
+/**
+ * Простая
+ *
+ * Для заданного числа n > 1 найти максимальный делитель, меньший n
+ */
 
 fun maxDivisor(n: Int): Int = TODO()
 
