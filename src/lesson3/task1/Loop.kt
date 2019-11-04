@@ -86,17 +86,16 @@ fun digitNumber(n: Int): Int {
  * Ряд Фибоначчи определён следующим образом: fib(1) = 1, fib(2) = 1, fib(n+2) = fib(n) + fib(n+1)
  */
 fun fib(n: Int): Int {
-    var fib1 = 1
     var fib2 = 0
     var fibs = 1
-
     for (i in 2..n) {
-        fib1 = fibs
+        val fib1 = fibs
         fibs += fib2
         fib2 = fib1
     }
     return fibs
 }
+
 
 /**
  * Простая
@@ -146,7 +145,7 @@ fun maxDivisor(n: Int): Int = n / minDivisor(n)
  * Взаимно простые числа не имеют общих делителей, кроме 1.
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
-fun isCoPrime(m: Int, n: Int): Boolean= TODO()
+fun isCoPrime(m: Int, n: Int): Boolean = TODO()
 
 /**
  * Простая
