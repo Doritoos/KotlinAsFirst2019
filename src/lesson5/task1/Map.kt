@@ -122,8 +122,8 @@ fun containsIn(a: Map<String, String>, b: Map<String, String>): Boolean =
  *     -> a changes to mutableMapOf() aka becomes empty
  */
 fun subtractOf(a: MutableMap<String, String>, b: Map<String, String>): Unit {
-    for ((key) in b) {
-        if (a[key] == b[key]) a.remove(key)
+    for ((key, value) in b) {
+        if (a[key] == value) a.remove(key)
     }
 }
 
@@ -154,8 +154,14 @@ fun whoAreInBoth(a: List<String>, b: List<String>): List<String> =
  *     mapOf("Emergency" to "911", "Police" to "02")
  *   ) -> mapOf("Emergency" to "112, 911", "Police" to "02")
  */
-fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Map<String, String> = TODO()
+fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Map<String, String> {
+    val list = (mapA.entries + mapB.entries).groupBy({ it.key }, { it.value })
+    val result = mutableMapOf<String, String>()
+    for ((key, value) in list) result[key] = value.joinToString(separator = ", ")
+    return result
 
+
+}
 /**
  * Средняя
  *
@@ -167,7 +173,7 @@ fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Map<S
  *     -> mapOf("MSFT" to 150.0, "NFLX" to 40.0)
  */
 fun averageStockPrice(stockPrices: List<Pair<String, Double>>): Map<String, Double> =
-    stockPrices.groupBy ({ it.first }, {it.second}).mapValues { it.value.average() }
+    stockPrices.groupBy({ it.first }, { it.second }).mapValues { it.value.average() }
 /**
  * Средняя
  *
