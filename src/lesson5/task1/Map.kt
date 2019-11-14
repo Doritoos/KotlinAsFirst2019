@@ -156,9 +156,7 @@ fun whoAreInBoth(a: List<String>, b: List<String>): List<String> =
  */
 fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Map<String, String> {
     val list = (mapA.entries + mapB.entries).groupBy({ it.key }, { it.value })
-    val result = mutableMapOf<String, String>()
-    for ((key, value) in list) result[key] = value.joinToString(separator = ", ")
-    return result
+    return list.mapValues { it.value.joinToString(separator = ", ") }
 
 
 }
