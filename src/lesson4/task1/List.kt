@@ -162,12 +162,9 @@ fun center(list: MutableList<Double>): MutableList<Double> {
  */
 fun times(a: List<Int>, b: List<Int>): Int {
     var c = 0
-    return if (a.isEmpty() || b.isEmpty()) c
-    else {
-        for (i in 0 until a.size)
-            c += a[i] * b[i]
-        c
-    }
+    for (i in 0 until a.size)
+        c += a[i] * b[i]
+    return c
 }
 
 /**
@@ -179,13 +176,10 @@ fun times(a: List<Int>, b: List<Int>): Int {
  * Значение пустого многочлена равно 0 при любом x.
  */
 fun polynom(p: List<Int>, x: Int): Int {
-    var g = 0.0
-    return if (p.isEmpty()) 0
-    else {
-        for (i in 0 until p.size)
-            g += p[i] * x.toDouble().pow(i)
-        g.toInt()
-    }
+    var g = 0
+    for (i in 0 until p.size)
+        g += (p[i] * x.toDouble().pow(i)).toInt()
+    return g
 }
 
 /**
@@ -202,8 +196,8 @@ fun accumulate(list: MutableList<Int>): MutableList<Int> {
     for (i in 1 until list.size)
         list[i] += list[i - 1]
     return list
-
 }
+
 /**
  * Средняя
  *
@@ -214,16 +208,14 @@ fun accumulate(list: MutableList<Int>): MutableList<Int> {
 fun factorize(n: Int): List<Int> {
     var dn = n
     val list = mutableListOf<Int>()
-    while (dn > 1) {
-        for (i in 2..dn)
-            if (dn % i == 0) {
-                list += i
-                dn /= i
-                break
-            }
-    }
-    return list.sorted()
+    for (i in 2..dn)
+        while (dn % i == 0) {
+            list += i
+            dn /= i
+        }
+    return list
 }
+
 
 /**
  * Сложная
@@ -244,10 +236,9 @@ fun factorizeToString(n: Int): String = factorize(n).joinToString(separator = "*
 fun convert(n: Int, base: Int): List<Int> {
     val list = mutableListOf<Int>()
     var dn = n
-    while (dn > base) {
+    while (dn >= base) {
         list += dn % base
         dn /= base
-
     }
     list += dn
     return list.reversed()
