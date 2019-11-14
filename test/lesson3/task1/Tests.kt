@@ -18,6 +18,13 @@ class Tests {
     }
 
     @Test
+    fun nod(){
+        assertEquals(30, nod(180, 150))
+        assertEquals(2, nod(24, 26))
+        assertEquals(8, nod(8, 24))
+    }
+
+    @Test
     @Tag("Example")
     fun isPrime() {
         assertFalse(isPrime(1))

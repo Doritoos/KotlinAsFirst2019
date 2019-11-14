@@ -138,13 +138,17 @@ fun rookOrBishopThreatens(
  * Если такой треугольник не существует, вернуть -1.
  */
 fun triangleKind(a: Double, b: Double, c: Double): Int {
+    val ma: Double = maxOf(a, b, c)
+    val mi: Double = minOf(a, b, c)
+    val m: Double = (a, b, c)
     return when {
-        (a + b <= c) || (a + c <= b) || (b + c <= a) -> -1
-        (c * c == a * a + b * b) || (a * a == b * b + c * c) || (b * b == a * a + c * c) -> 1
-        (c * c <= a * a + b * b) -> 0
-        else -> 2
+        (mi + m <= ma) -> -1
+        (ma * ma == mi * mi + m * m) -> 1
+        (ma * c > mi * mi + m * m) -> 2
+        else -> 0
     }
 }
+
 
 /**
  * Средняя

@@ -3,8 +3,16 @@
 package lesson3.task1
 
 import lesson1.task1.sqr
+import kotlin.math.abs
 import kotlin.math.pow
 import kotlin.math.sqrt
+
+fun nod(m: Int, n: Int): Int {
+    var k = 0
+    for (i in 1..n)
+        if ((m % i == 0) && (n % i == 0)) k = i
+    return k
+}
 
 /**
  * Пример
@@ -71,13 +79,16 @@ fun digitCountInNumber(n: Int, m: Int): Int =
  */
 fun digitNumber(n: Int): Int {
     var dn = 1
-    var k = n
+    var k = abs(n)
     while (k > 9) {
         k /= 10
         dn += 1
     }
     return dn
 }
+
+
+
 
 /**
  * Простая
@@ -97,6 +108,7 @@ fun fib(n: Int): Int {
 }
 
 
+
 /**
  * Простая
  *
@@ -104,14 +116,9 @@ fun fib(n: Int): Int {
  * минимальное число k, которое делится и на m и на n без остатка
  */
 fun lcm(m: Int, n: Int): Int {
-    var dm = m
-    var dn = n
     var mul = m * n
-    while (dm != dn) {
-        if (dm > dn) dm -= dn
-        else dn -= dm
-    }
-    return (mul / dn)
+    return (mul / nod(m, n))
+
 
 }
 
@@ -129,6 +136,8 @@ fun minDivisor(n: Int): Int {
     return if (i - 1 == n / 2) n
     else i
 }
+
+
 
 /**
  * Простая
