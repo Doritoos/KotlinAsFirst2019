@@ -140,7 +140,7 @@ fun rookOrBishopThreatens(
 fun triangleKind(a: Double, b: Double, c: Double): Int {
     val ma: Double = maxOf(a, b, c)
     val mi: Double = minOf(a, b, c)
-    val m: Double = (a, b, c)
+    val m: Double = a + b + c - ma - mi
     return when {
         (mi + m <= ma) -> -1
         (ma * ma == mi * mi + m * m) -> 1
