@@ -78,10 +78,13 @@ fun circleInside(
  * Вернуть true, если кирпич пройдёт
  */
 fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean {
+    val ma2 = maxOf(r, s)
+    val mi2 = minOf(r, s)
+    val ma1 = maxOf(a, b, c)
+    val mi1 = minOf(a, b, c)
+    val m1 = a + b + c - mi1 - ma1
     return when {
-        a <= r && b <= s || a <= s && b <= r -> true
-        c <= r && a <= s || c <= s && a <= r -> true
-        c <= r && b <= s || c <= s && b <= r -> true
+        m1 <= ma2 && mi1 <= mi2 || m1 <= mi2 && mi1 <= ma2 -> true
         else -> false
 
     }

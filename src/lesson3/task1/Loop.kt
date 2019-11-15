@@ -116,10 +116,8 @@ fun fib(n: Int): Int {
  * минимальное число k, которое делится и на m и на n без остатка
  */
 fun lcm(m: Int, n: Int): Int {
-    var mul = m * n
+    val mul = m * n
     return (mul / nod(m, n))
-
-
 }
 
 /**
@@ -154,7 +152,8 @@ fun maxDivisor(n: Int): Int = n / minDivisor(n)
  * Взаимно простые числа не имеют общих делителей, кроме 1.
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
-fun isCoPrime(m: Int, n: Int): Boolean = TODO()
+fun isCoPrime(m: Int, n: Int): Boolean = nod(m, n) == 1
+
 
 /**
  * Простая
@@ -251,7 +250,7 @@ fun squareSequenceDigit(n: Int): Int {
         sum += digitNumber(sqr(i))
         i++
     }
-    return (sqr(i - 1)) / 10.0.pow((sum - n) % 10).toInt()
+    return ((sqr(i - 1)) / 10.0.pow((sum - n)) % 10).toInt()
 }
 
 /**
@@ -263,4 +262,12 @@ fun squareSequenceDigit(n: Int): Int {
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun fibSequenceDigit(n: Int): Int = TODO()
+fun fibSequenceDigit(n: Int): Int {
+    var sum = 0
+    var i = 1
+    while (sum < n) {
+        sum += digitNumber(fib(i))
+        i++
+    }
+    return (fib(i - 1) / 10.0.pow((sum - n)) % 10).toInt()
+}
