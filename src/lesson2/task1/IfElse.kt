@@ -144,7 +144,7 @@ fun triangleKind(a: Double, b: Double, c: Double): Int {
     return when {
         (mi + m <= ma) -> -1
         (ma * ma == mi * mi + m * m) -> 1
-        (ma * c > mi * mi + m * m) -> 2
+        (ma * ma > mi * mi + m * m) -> 2
         else -> 0
     }
 }
