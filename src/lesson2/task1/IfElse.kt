@@ -124,7 +124,6 @@ fun rookOrBishopThreatens(
         (abs(kingY - bishopY) == abs(kingX - bishopX)) -> 2
         else -> 0
     }
-
 }
 
 
@@ -159,12 +158,9 @@ fun triangleKind(a: Double, b: Double, c: Double): Int {
  * Если пересечения нет, вернуть -1.
  */
 fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int {
-    return when {
-        (a <= c) && (c < b) && (b <= d) -> b - c
-        (c <= a) && (a < d) && (d <= b) -> d - a
-        (c <= a) && (b <= d) -> b - a
-        (a <= c) && (d <= b) -> d - c
-        (a == d) || (b == c) -> 0
-        else -> -1
-    }
+    val ma = maxOf(a, c)
+    val mi = minOf(b, d)
+    return if (mi - ma >= 0) (mi - ma)
+    else -1
+
 }
