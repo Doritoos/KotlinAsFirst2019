@@ -157,9 +157,8 @@ fun whoAreInBoth(a: List<String>, b: List<String>): List<String> =
 fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Map<String, String> {
     val list = (mapA.entries + mapB.entries).groupBy({ it.key }, { it.value })
     return list.mapValues { it.value.joinToString(separator = ", ") }
-
-
 }
+
 /**
  * Средняя
  *
@@ -172,6 +171,7 @@ fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Map<S
  */
 fun averageStockPrice(stockPrices: List<Pair<String, Double>>): Map<String, Double> =
     stockPrices.groupBy({ it.first }, { it.second }).mapValues { it.value.average() }
+
 /**
  * Средняя
  *

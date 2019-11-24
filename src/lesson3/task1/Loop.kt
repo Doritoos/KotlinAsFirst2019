@@ -8,10 +8,13 @@ import kotlin.math.pow
 import kotlin.math.sqrt
 
 fun nod(m: Int, n: Int): Int {
-    var k = 0
-    for (i in 1..n)
-        if ((m % i == 0) && (n % i == 0)) k = i
-    return k
+    var m = m
+    var n = n
+    while (m != 0 && n != 0) {
+        if (m > n) m %= n
+        else n %= m
+    }
+    return (m + n).toInt()
 }
 
 /**
@@ -88,8 +91,6 @@ fun digitNumber(n: Int): Int {
 }
 
 
-
-
 /**
  * Простая
  *
@@ -107,8 +108,6 @@ fun fib(n: Int): Int {
     return fibs
 }
 
-
-
 /**
  * Простая
  *
@@ -116,8 +115,8 @@ fun fib(n: Int): Int {
  * минимальное число k, которое делится и на m и на n без остатка
  */
 fun lcm(m: Int, n: Int): Int {
-    val mul = m * n
-    return (mul / nod(m, n))
+    val mul = m / nod(m, n)
+    return (mul * n)
 }
 
 /**
@@ -134,7 +133,6 @@ fun minDivisor(n: Int): Int {
     return if (i - 1 == n / 2) n
     else i
 }
-
 
 
 /**
@@ -234,6 +232,11 @@ fun isPalindrome(n: Int): Boolean = TODO()
  */
 fun hasDifferentDigits(n: Int): Boolean = TODO()
 
+
+
+fun CDigit(t: Int, ns: Int): Int = (t / 10.0.pow(ns) % 10).toInt()
+
+
 /**
  * Сложная
  *
@@ -250,8 +253,9 @@ fun squareSequenceDigit(n: Int): Int {
         sum += digitNumber(sqr(i))
         i++
     }
-    return ((sqr(i - 1)) / 10.0.pow((sum - n)) % 10).toInt()
+    return CDigit(sqr(i - 1), (sum - n))
 }
+
 
 /**
  * Сложная
@@ -269,5 +273,5 @@ fun fibSequenceDigit(n: Int): Int {
         sum += digitNumber(fib(i))
         i++
     }
-    return (fib(i - 1) / 10.0.pow((sum - n)) % 10).toInt()
+    return CDigit(fib(i - 1), (sum - n))
 }
