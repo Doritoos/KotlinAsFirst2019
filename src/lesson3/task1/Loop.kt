@@ -261,19 +261,6 @@ fun CDigit(a: Boolean, ns: Int): Int {
  */
 fun squareSequenceDigit(n: Int): Int = CDigit(false, n)
 
-
-
-
-//{ var sum = 0
-//    var i = 1
-//    while (sum < n) {
-//        sum += digitNumber(sqr(i))
-//        i++
-//    }
-//    return CDigit(sqr(i - 1), (sum - n))
-//}
-
-
 /**
  * Сложная
  *
@@ -284,11 +271,3 @@ fun squareSequenceDigit(n: Int): Int = CDigit(false, n)
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun fibSequenceDigit(n: Int): Int = CDigit(true, n)
-//    var sum = 0
-//    var i = 1
-//    while (sum < n) {
-//        sum += digitNumber(fib(i))
-//        i++
-//    }
-//    return CDigit(fib(i - 1), (sum - n))
-//}
