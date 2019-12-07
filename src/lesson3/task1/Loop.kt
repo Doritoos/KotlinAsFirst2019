@@ -3,6 +3,7 @@
 package lesson3.task1
 
 import lesson1.task1.sqr
+import lesson9.task2.sumNeighbours
 import kotlin.math.abs
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -127,11 +128,10 @@ fun lcm(m: Int, n: Int): Int {
 fun minDivisor(n: Int): Int {
     var i = 2
     while (i <= n / 2) {
-        if (n % i == 0) break
+        if (n % i == 0) return i
         else i++
     }
-    return if (i - 1 == n / 2) n
-    else i
+    return n
 }
 
 
@@ -234,7 +234,20 @@ fun hasDifferentDigits(n: Int): Boolean = TODO()
 
 
 
-fun CDigit(t: Int, ns: Int): Int = (t / 10.0.pow(ns) % 10).toInt()
+fun CDigit(a: Boolean, ns: Int): Int {
+    var i = 1
+    var sum = 0
+    var b: Int
+    while (sum < ns) {
+        b = if (a) fib(i)
+        else sqr(i)
+        sum += digitNumber(b)
+        i++
+    }
+    b = if (a) fib(i - 1)
+    else sqr(i - 1)
+    return (b / 10.0.pow(sum - ns) % 10).toInt()
+}
 
 
 /**
@@ -246,15 +259,19 @@ fun CDigit(t: Int, ns: Int): Int = (t / 10.0.pow(ns) % 10).toInt()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun squareSequenceDigit(n: Int): Int {
-    var sum = 0
-    var i = 1
-    while (sum < n) {
-        sum += digitNumber(sqr(i))
-        i++
-    }
-    return CDigit(sqr(i - 1), (sum - n))
-}
+fun squareSequenceDigit(n: Int): Int = CDigit(false, n)
+
+
+
+
+//{ var sum = 0
+//    var i = 1
+//    while (sum < n) {
+//        sum += digitNumber(sqr(i))
+//        i++
+//    }
+//    return CDigit(sqr(i - 1), (sum - n))
+//}
 
 
 /**
@@ -266,12 +283,12 @@ fun squareSequenceDigit(n: Int): Int {
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun fibSequenceDigit(n: Int): Int {
-    var sum = 0
-    var i = 1
-    while (sum < n) {
-        sum += digitNumber(fib(i))
-        i++
-    }
-    return CDigit(fib(i - 1), (sum - n))
-}
+fun fibSequenceDigit(n: Int): Int = CDigit(true, n)
+//    var sum = 0
+//    var i = 1
+//    while (sum < n) {
+//        sum += digitNumber(fib(i))
+//        i++
+//    }
+//    return CDigit(fib(i - 1), (sum - n))
+//}
