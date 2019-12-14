@@ -2,6 +2,8 @@
 
 package lesson6.task1
 
+import lesson2.task2.daysInMonth
+
 /**
  * Пример
  *
@@ -69,26 +71,38 @@ fun main() {
  * Обратите внимание: некорректная с точки зрения календаря дата (например, 30.02.2009) считается неверными
  * входными данными.
  */
-val mo = mapOf(
-    "январь" to "01",
-    "февраль" to "02",
-    "март" to "03",
-    "апрель" to "04",
-    "май" to "05",
-    "июнь" to "06",
-    "июль" to "07",
-    "август" to "08",
-    "сентябрь" to "09",
-    "октябрь" to "10",
-    "ноябрь" to "11",
-    "декабрь" to "12"
+val mo = listOf(
+    "",
+    "января",
+    "февраля",
+    "марта",
+    "апреля",
+    "мая",
+    "июня",
+    "июля",
+    "августа",
+    "сентября",
+    "октября",
+    "ноября",
+    "декабря"
 )
 
-fun dateStrToDigit(str: String): String = TODO()
-//{
-//    val part = str.split(" ")
-//    if (part.size != 3) return ""
-//    return}
+fun dateStrToDigit(str: String): String {
+    val month: Int
+    val part = str.split(" ")
+    if (part.size != 3) return ""
+    val day = part[0].toIntOrNull() ?: return ""
+    val year = part[2].toIntOrNull() ?: return ""
+    if (part[1] in mo) month = mo.indexOf(part[1])
+    else return ""
+    if (day > daysInMonth(month, year)) return ""
+    var ans = if (day < 10) "0$day"
+    else "$day"
+    ans += if (month < 10) ".0$month"
+    else ".$month"
+    ans += ".$year"
+    return ans
+}
 
 /**
  * Средняя
@@ -100,7 +114,17 @@ fun dateStrToDigit(str: String): String = TODO()
  * Обратите внимание: некорректная с точки зрения календаря дата (например, 30 февраля 2009) считается неверными
  * входными данными.
  */
-fun dateDigitToStr(digital: String): String = TODO()
+fun dateDigitToStr(digital: String): String {
+    val part = digital.split(".")
+    if (part.size != 3) return ""
+    val day = part[0].toIntOrNull() ?: return ""
+    val year = part[2].toIntOrNull() ?: return ""
+    if ((part[1].toIntOrNull() ?: return "") !in 1..12) return ""
+    val month = mo[part[1].toInt()]
+    if (day > daysInMonth(part[1].toInt(), year)) return ""
+    return ("$day $month $year")
+
+}
 
 /**
  * Средняя

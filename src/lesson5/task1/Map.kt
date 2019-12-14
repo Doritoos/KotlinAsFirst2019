@@ -134,8 +134,7 @@ fun subtractOf(a: MutableMap<String, String>, b: Map<String, String>): Unit {
  * В выходном списке не должно быть повторяюихся элементов,
  * т. е. whoAreInBoth(listOf("Марат", "Семён, "Марат"), listOf("Марат", "Марат")) == listOf("Марат")
  */
-fun whoAreInBoth(a: List<String>, b: List<String>): List<String> =
-    a.intersect(b).toList()
+fun whoAreInBoth(a: List<String>, b: List<String>): List<String> =  a.intersect(b).toList()
 
 /**
  * Средняя
@@ -226,7 +225,13 @@ fun extractRepeats(list: List<String>): Map<String, Int> =
  * Например:
  *   hasAnagrams(listOf("тор", "свет", "рот")) -> true
  */
-fun hasAnagrams(words: List<String>): Boolean = TODO()
+fun hasAnagrams(words: List<String>): Boolean {
+    val list = mutableSetOf<Map<Char, Int>>()
+    for (i in 0 until words.size) {
+        list.add(words[i].toList().sorted().groupingBy { it }.eachCount())
+    }
+    return words.size != list.size
+}
 
 /**
  * Сложная
@@ -271,8 +276,14 @@ fun propagateHandshakes(friends: Map<String, Set<String>>): Map<String, Set<Stri
  *   findSumOfTwo(listOf(1, 2, 3), 4) -> Pair(0, 2)
  *   findSumOfTwo(listOf(1, 2, 3), 6) -> Pair(-1, -1)
  */
-fun findSumOfTwo(list: List<Int>, number: Int): Pair<Int, Int> = TODO()
-
+fun findSumOfTwo(list: List<Int>, number: Int): Pair<Int, Int> {
+    var sum = 0
+    for (i in 0 until list.size) {
+        sum = number - list[i]
+        if (sum in list && list.indexOf(sum) != i) return (i to list.indexOf(sum))
+    }
+    return (-1 to -1)
+}
 /**
  * Очень сложная
  *

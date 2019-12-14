@@ -256,6 +256,11 @@ fun convert(n: Int, base: Int): List<Int> {
  * (например, n.toString(base) и подобные), запрещается.
  */
 fun convertToString(n: Int, base: Int): String = TODO()
+//{
+//    val list = convert(n, base)
+//
+//
+//}
 
 /**
  * Средняя
