@@ -141,7 +141,6 @@ fun dateDigitToStr(digital: String): String {
  * PS: Дополнительные примеры работы функции можно посмотреть в соответствующих тестах.
  */
 fun flattenPhoneNumber(phone: String): String = TODO()
-
 /**
  * Средняя
  *
@@ -187,7 +186,15 @@ fun plusMinus(expression: String): Int = TODO()
  * Вернуть индекс начала первого повторяющегося слова, или -1, если повторов нет.
  * Пример: "Он пошёл в в школу" => результат 9 (индекс первого 'в')
  */
-fun firstDuplicateIndex(str: String): Int = TODO()
+fun firstDuplicateIndex(str: String): Int {
+    var sum = 0
+    val part = str.toLowerCase().split(" ")
+    for (i in 0 until part.size - 1) {
+        if (part[i] == part[i + 1]) return sum
+        sum += part[i].length + 1
+    }
+    return -1
+}
 
 /**
  * Сложная
@@ -200,7 +207,16 @@ fun firstDuplicateIndex(str: String): Int = TODO()
  * или пустую строку при нарушении формата строки.
  * Все цены должны быть больше либо равны нуля.
  */
-fun mostExpensive(description: String): String = TODO()
+fun mostExpensive(description: String): String {
+    var max = 1
+    val str = description.replace(";", " ")
+    val part = Regex("""\s+""").split(str)
+    if (part.size < 2 || part.size % 2 != 0) return ""
+    for (i in 3 until part.size step 2) {
+        if ((part[i].toDoubleOrNull() ?: return "") > part[max].toDouble()) max = i
+    }
+    return part[max - 1]
+}
 
 /**
  * Сложная
