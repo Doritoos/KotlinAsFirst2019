@@ -255,12 +255,15 @@ fun convert(n: Int, base: Int): List<Int> {
  * Использовать функции стандартной библиотеки, напрямую и полностью решающие данную задачу
  * (например, n.toString(base) и подобные), запрещается.
  */
-fun convertToString(n: Int, base: Int): String = TODO()
-//{
-//    val list = convert(n, base)
-//
-//
-//}
+fun convertToString(n: Int, base: Int): String {
+    val list = convert(n, base)
+    val ans = mutableListOf<String>()
+    for (i in 0 until list.size) {
+        if (list[i] > 9) ans.add(('a' + list[i] - 10).toString())
+        else ans.add(list[i].toString())
+    }
+    return ans.joinToString(separator = "")
+}
 
 /**
  * Средняя

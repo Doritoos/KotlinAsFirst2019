@@ -88,13 +88,12 @@ val mo = listOf(
 )
 
 fun dateStrToDigit(str: String): String {
-    val month: Int
     val part = str.split(" ")
     if (part.size != 3) return ""
     val day = part[0].toIntOrNull() ?: return ""
     val year = part[2].toIntOrNull() ?: return ""
-    if (part[1] in mo) month = mo.indexOf(part[1])
-    else return ""
+    val month = mo.indexOf(part[1])
+    if (month < 1) return ""
     if (day > daysInMonth(month, year)) return ""
     var ans = if (day < 10) "0$day"
     else "$day"

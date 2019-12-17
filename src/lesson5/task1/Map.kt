@@ -134,7 +134,7 @@ fun subtractOf(a: MutableMap<String, String>, b: Map<String, String>): Unit {
  * В выходном списке не должно быть повторяюихся элементов,
  * т. е. whoAreInBoth(listOf("Марат", "Семён, "Марат"), listOf("Марат", "Марат")) == listOf("Марат")
  */
-fun whoAreInBoth(a: List<String>, b: List<String>): List<String> =  a.intersect(b).toList()
+fun whoAreInBoth(a: List<String>, b: List<String>): List<String> = a.intersect(b).toList()
 
 /**
  * Средняя
@@ -228,7 +228,7 @@ fun extractRepeats(list: List<String>): Map<String, Int> =
 fun hasAnagrams(words: List<String>): Boolean {
     val list = mutableSetOf<Map<Char, Int>>()
     for (i in 0 until words.size) {
-        list.add(words[i].toList().sorted().groupingBy { it }.eachCount())
+        list.add(words[i].groupingBy { it }.eachCount())
     }
     return words.size != list.size
 }
