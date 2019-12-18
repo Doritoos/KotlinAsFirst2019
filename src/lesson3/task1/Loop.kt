@@ -127,7 +127,8 @@ fun lcm(m: Int, n: Int): Int {
  */
 fun minDivisor(n: Int): Int {
     var i = 2
-    while (i <= n / 2) {
+    val ns = if (n % 2 != 0) n / 2 else sqr(n)
+    while (i <= ns) {
         if (n % i == 0) return i
         else i++
     }
@@ -234,7 +235,7 @@ fun hasDifferentDigits(n: Int): Boolean = TODO()
 
 
 
-fun CDigit(a: Boolean, ns: Int): Int {
+fun Cdigit(a: Boolean, ns: Int): Int {
     var i = 1
     var sum = 0
     var b: Int
@@ -259,7 +260,7 @@ fun CDigit(a: Boolean, ns: Int): Int {
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun squareSequenceDigit(n: Int): Int = CDigit(false, n)
+fun squareSequenceDigit(n: Int): Int = Cdigit(false, n)
 
 /**
  * Сложная
@@ -270,4 +271,4 @@ fun squareSequenceDigit(n: Int): Int = CDigit(false, n)
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun fibSequenceDigit(n: Int): Int = CDigit(true, n)
+fun fibSequenceDigit(n: Int): Int = Cdigit(true, n)
